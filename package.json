@@ -1,0 +1,21 @@
+{
+  "name": "users-ages-example",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=5.0 <6",
+    "npm": ">=3.3 <4"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test --report spec"
+  },
+  "dependencies": {
+    "chalk": "1.1.3",
+    "csv": "1.1.0",
+    "lodash": "4.14.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
