@@ -6,7 +6,8 @@ var line_number = 1;
 var user_list = [];
 var users_grouped = [];
 
-if (filereader.file_extension(process.argv[2]))
+console.time('processing');
+
 filereader.read(process.argv[2])
   .on('line', function (line) {
     var arr = line.split(",");
@@ -69,4 +70,6 @@ filereader.read(process.argv[2])
 
     // Display total number of users.
     console.log("\nTotal number of users: " + user_count);
+
+    console.timeEnd('processing');
   });
