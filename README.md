@@ -26,5 +26,5 @@ node index.js /path/to/file.{txt,csv}
 ```
 docker build -t <imagename> .
 docker run --rm -v /path/to/host/repo:/var/www:rw <imagename> bash -c "npm install --no-bin-links"
-docker run --rm -v /path/to/host/repo:/var/www:rw <imagename> bash -c "node index.js /path/to/file"
+docker run --rm -v /path/to/host/repo:/var/www:rw <imagename> bash -c "node index.js /path/to/file.{txt,csv}"
 ```
