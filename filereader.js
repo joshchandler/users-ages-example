@@ -27,5 +27,5 @@ module.exports = {
       return false;
     }
     return (index < 0) ? '' : file.substr(index);
-  },
+  }
 };
