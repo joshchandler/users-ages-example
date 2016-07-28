@@ -4,10 +4,6 @@ var filereader = require('../filereader');
 process.env.NODE_ENV = 'testing';
 
 describe('File', function () {
-  // Check file for correct data.
-  it('must have good data!', function () {
-
-  });
   describe('format', function () {
     it('can be a text file', function () {
       var txtfile = filereader.file_extension('./data.txt');
