@@ -9,13 +9,12 @@ var users_grouped = [];
 if (filereader.file_extension(process.argv[2]))
 filereader.read(process.argv[2])
   .on('line', function (line) {
-    var error_message = chalk.red('Line ' + line_number + ' has incorrect data.');
     var arr = line.split(",");
 
-    // Get a list of ages (still separated);
+    // Get a list of ages (still separated)
     user_list.push(arr[1]);
 
-    // Keep line number count.
+    // Keep line number count, specifically for user count later on.
     line_number++;
   })
   .on('close', function () {
@@ -23,10 +22,17 @@ filereader.read(process.argv[2])
     // Sort the array of ages
     var users = user_list.sort();
 
+    /**
+     * Explanation for program's core functionality below.
+     *
+     * We loop through the array based on the value of {current} (which is the current iteration in the loop).
+     * Each iteration of the same age increases the count.
+     * Once we have reached the end of a group of ages,
+     * we add the age with the number of users with that age to {users_grouped}
+     */
     var current = null;
     var count = 0;
 
-    // We loop through the sorted array of users ages.
     for (var i = 0; i < users.length; i++) {
 
       // If age is different than the value of current, otherwise just increase the count.
@@ -47,17 +53,20 @@ filereader.read(process.argv[2])
       }
     }
 
-    // Include the last entry.
+    /**
+     * The loop exits without the last iteration added to {users_grouped}.
+     * We add that here.
+     */
     if (count > 0) {
       users_grouped.push([parseInt(current), count]);
     }
 
-    // Get user count.
     user_count = line_number - 1;
 
-    // Output the list of faux tuples where first integer is
+    // Output the list of (faux) tuples where first integer is
     // age and second integer is number of users with that age.
     console.log(users_grouped);
 
+    // Display total number of users.
     console.log("\nTotal number of users: " + user_count);
   });
